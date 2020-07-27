@@ -88,4 +88,5 @@ ui_p2_down={
 
 [rendering]
 
+environment/default_clear_color=Color( 0.0627451, 0.678431, 0.843137, 1 )
 environment/default_environment="res://default_env.tres"

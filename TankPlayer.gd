@@ -17,6 +17,7 @@ export var ui_left : String
 export var ui_right : String
 export var ui_up : String
 export var ui_down : String
+export var initial_heading : float = 0.0
 
 func _ready():
 	heading = get_rotation_degrees()
@@ -35,7 +36,7 @@ func _physics_process(delta):
 	var fwd = FWD_SPEED * delta * (Input.get_action_strength(ui_down) - Input.get_action_strength(ui_up))	
 	
 	if fwd !=0:
-		var adj_heading = heading+90
+		var adj_heading = heading+90 - initial_heading
 		velocity.x = fwd * cos(adj_heading * (PI/180))
 		velocity.y = fwd * sin(adj_heading * (PI/180))
 		print("velocity: ", velocity)

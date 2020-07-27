@@ -1,8 +1,8 @@
 [gd_scene load_steps=26 format=2]
 
-[ext_resource path="res://dg_tank.png" type="Texture" id=1]
+[ext_resource path="res://boat_guy_still.png" type="Texture" id=1]
 [ext_resource path="res://border_tiles.png" type="Texture" id=2]
-[ext_resource path="res://orange_tank.png" type="Texture" id=3]
+[ext_resource path="res://boat_guy_still2.png" type="Texture" id=3]
 [ext_resource path="res://TankPlayer.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -226,6 +226,7 @@ ui_left = "ui_p1_left"
 ui_right = "ui_p1_right"
 ui_up = "ui_p1_up"
 ui_down = "ui_p1_down"
+initial_heading = -90.0
 
 [node name="Tank2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 14.3036, 98.4222 )
@@ -234,3 +235,4 @@ ui_left = "ui_p2_left"
 ui_right = "ui_p2_right"
 ui_up = "ui_p2_up"
 ui_down = "ui_p2_down"
+initial_heading = -90.0
