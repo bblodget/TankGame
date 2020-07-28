@@ -226,7 +226,8 @@ ui_left = "ui_p1_left"
 ui_right = "ui_p1_right"
 ui_up = "ui_p1_up"
 ui_down = "ui_p1_down"
-initial_heading = -90.0
+ui_fire = "ui_p1_fire"
+initial_heading = 90.0
 
 [node name="Tank2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 14.3036, 98.4222 )
@@ -235,4 +236,5 @@ ui_left = "ui_p2_left"
 ui_right = "ui_p2_right"
 ui_up = "ui_p2_up"
 ui_down = "ui_p2_down"
-initial_heading = -90.0
+ui_fire = "ui_p2_fire"
+initial_heading = 90.0
