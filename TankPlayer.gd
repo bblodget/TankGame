@@ -9,6 +9,9 @@ const TURN_SPEED = 90 # degrees per second
 # Global Vars
 var velocity = Vector2.ZERO
 var heading
+var fire = 0
+var last_fire = 0
+var bullet_scene
 
 # Instance variables
 export var tank_sprite : Texture
@@ -24,12 +27,14 @@ func _ready():
 	heading = get_rotation_degrees()
 
 	$tank.texture = tank_sprite
+	bullet_scene = load("res://Bullet.tscn")
 
 func _physics_process(delta):
-	var fire = Input.get_action_strength(ui_fire)
-	
-	if fire:
+
+	fire = Input.get_action_strength(ui_fire)
+	if (fire==1) and (last_fire==0):
 		shoot()	
+	last_fire = fire
 
 		
 	var turn = TURN_SPEED * (Input.get_action_strength(ui_right) - Input.get_action_strength(ui_left))	
@@ -55,12 +60,15 @@ func _physics_process(delta):
 
 	
 func shoot():
-	var bullet_scene = load("res://Bullet.tscn")
-	var bullet = bullet_scene.instance()
-	var world = get_tree().get_root().get_node("World")
 	
-	bullet.transform = world.transform
-	add_child_below_node(world, bullet)
+	var bullet = bullet_scene.instance()
+	owner.add_child(bullet)
+	bullet.transform = transform
+	
+	#var world = get_tree().get_root().get_node("World")
+	
+	#bullet.transform = world.transform
+	#add_child_below_node(world, bullet)
 	
 	
 	

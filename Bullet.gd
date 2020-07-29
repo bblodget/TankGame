@@ -21,7 +21,7 @@ func _physics_process(delta):
 	#velocity.y = delta * BULLET_SPEED * sin(heading * (PI/180))
 	#move_and_collide(velocity)
 	
-	if position.y < -1000:
+	if position.y < 10:
 		queue_free()
 		
-	move_and_slide(velocity)
+	move_and_collide(velocity * delta)
