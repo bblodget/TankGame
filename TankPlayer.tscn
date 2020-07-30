@@ -13,10 +13,8 @@ __meta__ = {
 }
 
 [node name="tank" type="Sprite" parent="."]
-position = Vector2( -0.106995, 0.0492935 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.106995, 0.0492935 )
 shape = SubResource( 1 )
