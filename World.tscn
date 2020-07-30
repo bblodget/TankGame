@@ -1,8 +1,8 @@
 [gd_scene load_steps=26 format=2]
 
-[ext_resource path="res://boat_guy_still.png" type="Texture" id=1]
+[ext_resource path="res://orange_tank.png" type="Texture" id=1]
 [ext_resource path="res://border_tiles.png" type="Texture" id=2]
-[ext_resource path="res://boat_guy_still2.png" type="Texture" id=3]
+[ext_resource path="res://dg_tank.png" type="Texture" id=3]
 [ext_resource path="res://TankPlayer.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -221,20 +221,18 @@ tile_data = PoolIntArray( -1, 0, 131073, -65536, 0, 131076, -65535, 0, 131076, -
 
 [node name="Tank1" parent="." instance=ExtResource( 4 )]
 position = Vector2( 299.694, 95.3571 )
-tank_sprite = ExtResource( 1 )
+tank_sprite = ExtResource( 3 )
 ui_left = "ui_p1_left"
 ui_right = "ui_p1_right"
 ui_up = "ui_p1_up"
 ui_down = "ui_p1_down"
 ui_fire = "ui_p1_fire"
-initial_heading = 90.0
 
 [node name="Tank2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 14.3036, 98.4222 )
-tank_sprite = ExtResource( 3 )
+tank_sprite = ExtResource( 1 )
 ui_left = "ui_p2_left"
 ui_right = "ui_p2_right"
 ui_up = "ui_p2_up"
 ui_down = "ui_p2_down"
 ui_fire = "ui_p2_fire"
-initial_heading = 90.0
