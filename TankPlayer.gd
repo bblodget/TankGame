@@ -74,6 +74,7 @@ func shoot():
 	owner.add_child(bullet)
 	
 	bullet.set_global_position(spawn_point)
+	bullet.set_velocity(direction * 100)
 	#bullet.transform = transform
 	
 	
