@@ -12,7 +12,9 @@ var heading
 var adj_heading
 var fire = 0
 var last_fire = 0
-var bullet_scene
+var can_fire = true
+var rate_of_fire = 0.4
+var bullet_scene = preload("res://Bullet.tscn")
 
 # Instance variables
 export var tank_sprite : Texture
@@ -26,14 +28,9 @@ export var initial_heading : float = 0.0
 
 func _ready():
 	heading = get_rotation_degrees()
-
 	$tank.texture = tank_sprite
-	bullet_scene = load("res://Bullet.tscn")
 
 func _physics_process(delta):
-
-
-
 		
 	var turn = TURN_SPEED * (Input.get_action_strength(ui_right) - Input.get_action_strength(ui_left))	
 	
@@ -44,9 +41,13 @@ func _physics_process(delta):
 		set_rotation_degrees(heading)
 		
 	fire = Input.get_action_strength(ui_fire)
-	if (fire==1) and (last_fire==0):
+	if (fire==1) and (can_fire == true) and (last_fire==0):
+		can_fire = false
 		shoot()	
+		#yield(get_tree().create_timer(rate_of_fire), "timeout")
+		can_fire = true
 	last_fire = fire
+
 
 		
 	var fwd = FWD_SPEED * delta * (Input.get_action_strength(ui_down) - Input.get_action_strength(ui_up))	
@@ -71,10 +72,15 @@ func shoot():
 	var spawn_point = gpos + (direction * distance_from_me)
 	
 	var bullet = bullet_scene.instance()
+	bullet.set_global_position(spawn_point)
+	bullet.rotation = (adj_heading - 90)* (PI/180)
+	print("heading: ", heading)
+	print("adj_heading: ", adj_heading)
 	owner.add_child(bullet)
 	
-	bullet.set_global_position(spawn_point)
-	bullet.set_velocity(direction * 100)
+
+	
+	#bullet.set_velocity(direction * 100)
 	#bullet.transform = transform
 	
 	
