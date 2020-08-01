@@ -14,9 +14,11 @@ func _on_TimerBullet_timeout():
 
 
 func _on_Bullet_Rigid_body_entered(body):
-	self.hide()
-	if (body.name=="Tank1"):
-		get_parent().get_node("Tank1").hit()		
-	if (body.name=="Tank2"):
-		get_parent().get_node("Tank2").hit()
+	if self.visible:
+		self.hide()
+		if (body.name=="Tank1"):
+			get_parent().get_node("Tank1").hit()		
+		if (body.name=="Tank2"):
+			get_parent().get_node("Tank2").hit()
+	
 	

@@ -20,4 +20,7 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="TimerHidden" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="StartPosition" type="Position2D" parent="."]
 [connection signal="timeout" from="TimerHidden" to="." method="_on_TimerHidden_timeout"]

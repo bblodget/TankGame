@@ -29,8 +29,12 @@ export var initial_heading : float = 0.0
 func _ready():
 	heading = get_rotation_degrees()
 	$tank.texture = tank_sprite
+	# self.position = $StartPosition.position
 
 func _physics_process(delta):
+	
+	if not visible:
+		return
 		
 	var turn = TURN_SPEED * (Input.get_action_strength(ui_right) - Input.get_action_strength(ui_left))	
 	
@@ -97,4 +101,6 @@ func hit():
 
 func _on_TimerHidden_timeout():
 	$TimerHidden.stop()
+	print("I'm back!!: ",self.name)
+	self.position = $StartPosition.position
 	self.show()
