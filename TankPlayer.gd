@@ -89,5 +89,12 @@ func shoot():
 	#bullet.transform = world.transform
 	#add_child_below_node(world, bullet)
 	
+func hit():
+	print("I'm hit: ",self.name)
+	self.hide()
+	$TimerHidden.start()
 	
-	
+
+func _on_TimerHidden_timeout():
+	$TimerHidden.stop()
+	self.show()

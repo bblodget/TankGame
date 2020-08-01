@@ -13,7 +13,11 @@ __meta__ = {
 }
 
 [node name="tank" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="TimerHidden" type="Timer" parent="."]
+[connection signal="timeout" from="TimerHidden" to="." method="_on_TimerHidden_timeout"]
