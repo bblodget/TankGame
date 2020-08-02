@@ -15,6 +15,7 @@ var last_fire = 0
 var can_fire = true
 var rate_of_fire = 0.4
 var bullet_scene = preload("res://Bullet.tscn")
+var enemy_tank
 
 # Instance variables
 export var tank_sprite : Texture
@@ -29,7 +30,12 @@ export var initial_heading : float = 0.0
 func _ready():
 	heading = get_rotation_degrees()
 	$tank.texture = tank_sprite
-	# self.position = $StartPosition.position
+	if self.name=="Tank1":
+		enemy_tank = owner.get_node("Tank2")
+	else: 
+		enemy_tank = owner.get_node("Tank1")
+		
+	print("enemy_tank: ",enemy_tank.name)
 
 func _physics_process(delta):
 	
@@ -102,5 +108,11 @@ func hit():
 func _on_TimerHidden_timeout():
 	$TimerHidden.stop()
 	print("I'm back!!: ",self.name)
-	self.position = $StartPosition.position
+	#self.position = $StartPosition.position
+	var dist1 = enemy_tank.global_position.distance_to(owner.get_node("SpawnPos1").position)
+	var dist2 = enemy_tank.global_position.distance_to(owner.get_node("SpawnPos2").position)
+	if dist1 > dist2:
+		self.position = owner.get_node("SpawnPos1").position 
+	else:
+		self.position = owner.get_node("SpawnPos2").position
 	self.show()
