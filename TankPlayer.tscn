@@ -1,10 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://TankPlayer.gd" type="Script" id=1]
 [ext_resource path="res://boat_guy_still.png" type="Texture" id=2]
+[ext_resource path="res://explosion_2.png" type="Texture" id=3]
+[ext_resource path="res://explosion_3.png" type="Texture" id=4]
+[ext_resource path="res://explosion_1.png" type="Texture" id=5]
+[ext_resource path="res://explosion_4.png" type="Texture" id=6]
+[ext_resource path="res://explosion_5.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.78017, 7.10828 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="TankPlayer" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -19,8 +32,9 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="TimerHidden" type="Timer" parent="."]
-wait_time = 2.0
-
 [node name="StartPosition" type="Position2D" parent="."]
-[connection signal="timeout" from="TimerHidden" to="." method="_on_TimerHidden_timeout"]
+
+[node name="ExplosionAnim" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+frame = 1
+[connection signal="animation_finished" from="ExplosionAnim" to="." method="_on_ExplosionAnim_animation_finished"]

@@ -36,10 +36,13 @@ func _ready():
 		enemy_tank = owner.get_node("Tank1")
 		
 	print("enemy_tank: ",enemy_tank.name)
+	
+	
+	$ExplosionAnim.hide()
 
 func _physics_process(delta):
 	
-	if not visible:
+	if not $tank.visible:
 		return
 		
 	var turn = TURN_SPEED * (Input.get_action_strength(ui_right) - Input.get_action_strength(ui_left))	
@@ -101,12 +104,15 @@ func shoot():
 	
 func hit():
 	print("I'm hit: ",self.name)
-	self.hide()
-	$TimerHidden.start()
+	$tank.hide()
+	$ExplosionAnim.show()
+	$ExplosionAnim.play()
+	
 	
 
-func _on_TimerHidden_timeout():
-	$TimerHidden.stop()
+func _on_ExplosionAnim_animation_finished():
+	$ExplosionAnim.stop()
+	$ExplosionAnim.hide()
 	print("I'm back!!: ",self.name)
 	#self.position = $StartPosition.position
 	var dist1 = enemy_tank.global_position.distance_to(owner.get_node("SpawnPos1").position)
@@ -115,4 +121,4 @@ func _on_TimerHidden_timeout():
 		self.position = owner.get_node("SpawnPos1").position 
 	else:
 		self.position = owner.get_node("SpawnPos2").position
-	self.show()
+	$tank.show()
