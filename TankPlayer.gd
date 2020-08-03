@@ -16,6 +16,10 @@ var can_fire = true
 var rate_of_fire = 0.4
 var bullet_scene = preload("res://Bullet.tscn")
 var enemy_tank
+var hud
+
+# Custom Signals
+signal tank_hit(dead_tank, live_tank)
 
 # Instance variables
 export var tank_sprite : Texture
@@ -39,6 +43,15 @@ func _ready():
 	
 	
 	$ExplosionAnim.hide()
+	
+	hud = owner.get_node("Score")
+	print("hud name: ",hud.name)
+	#print("wait for hud..")
+	#yield(hud,"ready")
+	#print("hud ready")
+	var error = self.connect("tank_hit", hud, "_on_tank_hit")
+	print("connect error: ", error)
+
 
 func _physics_process(delta):
 	
@@ -103,10 +116,12 @@ func shoot():
 	#add_child_below_node(world, bullet)
 	
 func hit():
-	print("I'm hit: ",self.name)
-	$tank.hide()
-	$ExplosionAnim.show()
-	$ExplosionAnim.play()
+	if not $ExplosionAnim.is_playing():
+		print("I'm hit: ",self.name)
+		emit_signal("tank_hit", self.name, enemy_tank.name)
+		$tank.hide()
+		$ExplosionAnim.show()
+		$ExplosionAnim.play()
 	
 	
 
