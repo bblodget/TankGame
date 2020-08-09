@@ -21,20 +21,20 @@ animations = [ {
 
 [node name="TankPlayer" type="KinematicBody2D"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="tank" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
+offset = Vector2( 0, -1.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="StartPosition" type="Position2D" parent="."]
+visible = false
 
 [node name="ExplosionAnim" type="AnimatedSprite" parent="."]
+visible = false
 frames = SubResource( 2 )
 frame = 1
 [connection signal="animation_finished" from="ExplosionAnim" to="." method="_on_ExplosionAnim_animation_finished"]
