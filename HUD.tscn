@@ -23,7 +23,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
-win_score = 1
+win_score = 10
 GREEN = Color( 0.14902, 0.835294, 0.121569, 1 )
 
 [node name="Player1Score" type="Label" parent="."]
