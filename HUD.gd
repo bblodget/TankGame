@@ -1,6 +1,7 @@
 extends Node2D
 
 # Global Vars
+var game_over = false
 
 
 # Export vars
@@ -20,10 +21,13 @@ func _ready():
 #	pass
 
 func _on_tank_hit(dead_tank, live_tank):
+	if game_over:
+		return
+		
 	var score
 	var score_board
 	#print("A tank was hit!: ",dead_tank)
-	if live_tank == "Tank1":
+	if live_tank.name == "Tank1":
 		score_board = $Player1Score
 	else:
 		score_board = $Player2Score
@@ -35,7 +39,10 @@ func _on_tank_hit(dead_tank, live_tank):
 		score_board.text = str(score)
 		
 	if score == win_score:
-		if live_tank == "Tank1":
+		dead_tank.game_over = true
+		live_tank.game_over = true
+		game_over = true
+		if live_tank.name == "Tank1":
 			#$PlayerWins.set("custom_colors/font_color",GREEN)
 			$PlayerWins.add_color_override("font_color", GREEN)
 			$PlayerWins.text = "Green Wins"

@@ -17,6 +17,7 @@ var rate_of_fire = 0.4
 var bullet_scene = preload("res://Bullet.tscn")
 var enemy_tank
 var hud
+var game_over = false
 
 # Custom Signals
 signal tank_hit(dead_tank, live_tank)
@@ -55,7 +56,7 @@ func _ready():
 
 func _physics_process(delta):
 	
-	if not $tank.visible:
+	if not $tank.visible or game_over:
 		return
 		
 	var turn = TURN_SPEED * (Input.get_action_strength(ui_right) - Input.get_action_strength(ui_left))	
@@ -116,9 +117,9 @@ func shoot():
 	#add_child_below_node(world, bullet)
 	
 func hit():
-	if not $ExplosionAnim.is_playing():
+	if not $ExplosionAnim.is_playing() and not game_over:
 		print("I'm hit: ",self.name)
-		emit_signal("tank_hit", self.name, enemy_tank.name)
+		emit_signal("tank_hit", self, enemy_tank)
 		$tank.hide()
 		$ExplosionAnim.show()
 		$ExplosionAnim.play()
