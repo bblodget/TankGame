@@ -39,8 +39,8 @@ func _on_tank_hit(dead_tank, live_tank):
 		score_board.text = str(score)
 		
 	if score == win_score:
-		dead_tank.game_over = true
-		live_tank.game_over = true
+		dead_tank.set_game_over(true)
+		live_tank.set_game_over(true)
 		game_over = true
 		if live_tank.name == "Tank1":
 			#$PlayerWins.set("custom_colors/font_color",GREEN)

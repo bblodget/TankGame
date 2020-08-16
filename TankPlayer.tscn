@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://TankPlayer.gd" type="Script" id=1]
 [ext_resource path="res://boat_guy_still.png" type="Texture" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://explosion_1.png" type="Texture" id=5]
 [ext_resource path="res://explosion_4.png" type="Texture" id=6]
 [ext_resource path="res://explosion_5.png" type="Texture" id=7]
+[ext_resource path="res://sounds/move.wav" type="AudioStream" id=8]
+[ext_resource path="res://sounds/idle.wav" type="AudioStream" id=9]
+[ext_resource path="res://sounds/fire.wav" type="AudioStream" id=10]
+[ext_resource path="res://sounds/explosion.wav" type="AudioStream" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.78017, 7.10828 )
@@ -37,4 +41,21 @@ visible = false
 visible = false
 frames = SubResource( 2 )
 frame = 1
+
+[node name="SoundIdle" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+volume_db = -15.0
+
+[node name="SoundMove" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+volume_db = -15.0
+pitch_scale = 1.2
+
+[node name="SoundFire" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+
+[node name="SoundExplosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
 [connection signal="animation_finished" from="ExplosionAnim" to="." method="_on_ExplosionAnim_animation_finished"]
+[connection signal="finished" from="SoundFire" to="." method="_on_SoundFire_finished"]
+[connection signal="finished" from="SoundExplosion" to="." method="_on_SoundExplosion_finished"]

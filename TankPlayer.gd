@@ -18,6 +18,7 @@ var bullet_scene = preload("res://Bullet.tscn")
 var enemy_tank
 var hud
 var game_over = false
+var play_sound = false
 
 # Custom Signals
 signal tank_hit(dead_tank, live_tank)
@@ -37,8 +38,10 @@ func _ready():
 	$tank.texture = tank_sprite
 	if self.name=="Tank1":
 		enemy_tank = owner.get_node("Tank2")
+		play_sound = true
 	else: 
 		enemy_tank = owner.get_node("Tank1")
+		play_sound = true
 		
 	print("enemy_tank: ",enemy_tank.name)
 	
@@ -52,7 +55,29 @@ func _ready():
 	#print("hud ready")
 	var error = self.connect("tank_hit", hud, "_on_tank_hit")
 	print("connect error: ", error)
+	
+	if play_sound == true:
+		$SoundIdle.playing = true
+		$SoundMove.playing = true
+		$SoundFire.playing = false
+		$SoundExplosion.playing = false
+		
+		$SoundIdle.set_stream_paused(false)
+		$SoundMove.set_stream_paused(true)
+	
+		
+	
+	#$SoundIdle.set_stream_paused(true)
+	#$SoundMove.set_stream_paused(true)
 
+func set_game_over(is_over):
+	game_over = is_over
+	$SoundIdle.playing = false
+	$SoundMove.playing = false
+	$SoundFire.playing = false
+	$SoundExplosion.playing = false
+	
+	
 
 func _physics_process(delta):
 	
@@ -80,16 +105,26 @@ func _physics_process(delta):
 	var fwd = FWD_SPEED * delta * (Input.get_action_strength(ui_down) - Input.get_action_strength(ui_up))	
 	
 	if fwd !=0:
+		# Moving
 		velocity.x = (-fwd) * sin(adj_heading * (PI/180))
 		velocity.y = fwd * cos(adj_heading * (PI/180))
+		if play_sound == true:
+			$SoundIdle.set_stream_paused(true)
+			$SoundMove.set_stream_paused(false)
 
 	else:
+		# Stopped
 		velocity = Vector2.ZERO
+		if play_sound == true:
+			$SoundMove.set_stream_paused(true)
+			$SoundIdle.set_stream_paused(false)
+		
 	
 	move_and_collide(velocity)
 	
 	
 func shoot():
+	
 	
 	var direction = Vector2(sin(adj_heading * (PI/180)), -cos(adj_heading * (PI/180)))
 	
@@ -105,6 +140,9 @@ func shoot():
 	print("adj_heading: ", adj_heading)
 	owner.add_child(bullet)
 	
+	if play_sound == true:
+		$SoundFire.playing = true
+		
 
 	
 	#bullet.set_velocity(direction * 100)
@@ -120,6 +158,8 @@ func hit():
 	if not $ExplosionAnim.is_playing() and not game_over:
 		print("I'm hit: ",self.name)
 		emit_signal("tank_hit", self, enemy_tank)
+		if play_sound == true:
+			$SoundExplosion.playing = true
 		$tank.hide()
 		$ExplosionAnim.show()
 		$ExplosionAnim.play()
@@ -138,3 +178,14 @@ func _on_ExplosionAnim_animation_finished():
 	else:
 		self.position = owner.get_node("SpawnPos2").position
 	$tank.show()
+
+
+func _on_SoundFire_finished():
+	$SoundFire.playing = false
+	$SoundFire.seek(0.0)
+	print("Fire Finsihed!!!!")
+
+
+func _on_SoundExplosion_finished():
+	$SoundExplosion.playing = false
+	$SoundExplosion.seek(0.0)
