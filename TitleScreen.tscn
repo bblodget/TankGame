@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://fonts/davida/Davida Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://boat_guy_still.png" type="Texture" id=2]
+[ext_resource path="res://TitleBoat1.gd" type="Script" id=3]
+[ext_resource path="res://TitleScreen.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 38
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 38
+font_data = ExtResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 5.30484, 36.8885 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 7.12999, 16.2136 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 59.7558, 21.6101 )
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Comb_label" type="Label" parent="."]
+margin_left = 88.028
+margin_top = 76.211
+margin_right = 187.028
+margin_bottom = 120.211
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.945098, 0.188235, 0.0823529, 1 )
+text = "Comb"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="at_label" type="Label" parent="."]
+margin_left = 185.102
+margin_top = 76.2113
+margin_right = 228.102
+margin_bottom = 120.211
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.945098, 0.188235, 0.0823529, 1 )
+text = "at"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title_Area" type="Area2D" parent="."]
+position = Vector2( 164.049, 95.7282 )
+rotation = -1.5708
+scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Title_Area"]
+shape = SubResource( 4 )
+
+[node name="TitleBoat1" type="KinematicBody2D" parent="."]
+position = Vector2( 179.211, 227.519 )
+rotation = -1.5708
+scale = Vector2( 2, 2 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TitleBoat1"]
+rotation = 1.5708
+shape = SubResource( 3 )
+
+[node name="boat_guy_still" type="Sprite" parent="TitleBoat1"]
+rotation = -5.56362e-08
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="Screen_Exit" type="Area2D" parent="."]
+position = Vector2( 170.639, -80.8291 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Exit"]
+shape = SubResource( 5 )
+[connection signal="area_entered" from="Title_Area" to="." method="_on_Title_Area_area_entered"]
+[connection signal="body_entered" from="Title_Area" to="." method="_on_Title_Area_body_entered"]
+[connection signal="body_exited" from="Title_Area" to="." method="_on_Title_Area_body_exited"]
+[connection signal="body_entered" from="Screen_Exit" to="TitleBoat1" method="_on_Screen_Exit_body_entered"]
