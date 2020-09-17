@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://fonts/davida/Davida Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://boat_guy_still.png" type="Texture" id=2]
 [ext_resource path="res://TitleBoat1.gd" type="Script" id=3]
 [ext_resource path="res://TitleScreen.gd" type="Script" id=4]
+[ext_resource path="res://boat_guy_still2.png" type="Texture" id=5]
+[ext_resource path="res://TitleBoat2.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 38
@@ -79,6 +81,24 @@ rotation = -5.56362e-08
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
+[node name="TitleBoat2" type="KinematicBody2D" parent="."]
+position = Vector2( 180.319, 294.188 )
+rotation = -1.5708
+scale = Vector2( 2, 2 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TitleBoat2"]
+rotation = 1.5708
+shape = SubResource( 3 )
+
+[node name="boat_guy_still2" type="Sprite" parent="TitleBoat2"]
+rotation = -5.56362e-08
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
 [node name="Screen_Exit" type="Area2D" parent="."]
 position = Vector2( 170.639, -80.8291 )
 __meta__ = {
@@ -87,7 +107,11 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Exit"]
 shape = SubResource( 5 )
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.5
 [connection signal="area_entered" from="Title_Area" to="." method="_on_Title_Area_area_entered"]
 [connection signal="body_entered" from="Title_Area" to="." method="_on_Title_Area_body_entered"]
 [connection signal="body_exited" from="Title_Area" to="." method="_on_Title_Area_body_exited"]
 [connection signal="body_entered" from="Screen_Exit" to="TitleBoat1" method="_on_Screen_Exit_body_entered"]
+[connection signal="timeout" from="ShootTimer" to="TitleBoat2" method="_on_ShootTimer_timeout"]

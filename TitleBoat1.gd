@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 # Max speeds
-const FWD_SPEED = 50
+const FWD_SPEED = 100
 
 # Global Vars
 var velocity = Vector2.ZERO
