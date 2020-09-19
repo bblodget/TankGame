@@ -6,7 +6,7 @@ extends Node2D
 # var b = "text"
 
 # Max speeds
-const FWD_SPEED = 10
+const FWD_SPEED = 20
 
 # Global Vars
 var velocity = Vector2.ZERO

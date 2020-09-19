@@ -15,10 +15,10 @@ font_data = ExtResource( 1 )
 size = 38
 font_data = ExtResource( 1 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 5.30484, 36.8885 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 7.12999, 16.2136 )
 
 [sub_resource type="RectangleShape2D" id=5]
@@ -61,7 +61,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Title_Area"]
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="TitleBoat1" type="KinematicBody2D" parent="."]
 position = Vector2( 179.211, 227.519 )
@@ -74,7 +74,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TitleBoat1"]
 rotation = 1.5708
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="boat_guy_still" type="Sprite" parent="TitleBoat1"]
 rotation = -5.56362e-08
@@ -92,7 +92,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TitleBoat2"]
 rotation = 1.5708
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="boat_guy_still2" type="Sprite" parent="TitleBoat2"]
 rotation = -5.56362e-08
