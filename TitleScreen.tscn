@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://fonts/davida/Davida Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://boat_guy_still.png" type="Texture" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://TitleScreen.gd" type="Script" id=4]
 [ext_resource path="res://boat_guy_still2.png" type="Texture" id=5]
 [ext_resource path="res://TitleBoat2.gd" type="Script" id=6]
+[ext_resource path="res://lifesaver/lifesaver_2.png" type="Texture" id=7]
+[ext_resource path="res://lifesaver/lifesaver_4.png" type="Texture" id=8]
+[ext_resource path="res://lifesaver/lifesaver_1.png" type="Texture" id=9]
+[ext_resource path="res://lifesaver/lifesaver_3.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 38
@@ -23,6 +27,15 @@ extents = Vector2( 7.12999, 16.2136 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 59.7558, 21.6101 )
+
+[sub_resource type="SpriteFrames" id=6]
+resource_local_to_scene = true
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource( 4 )
@@ -110,6 +123,14 @@ shape = SubResource( 5 )
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="Lifesaver" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 185.074, 97.8867 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 6 )
+frame = 3
+playing = true
 [connection signal="area_entered" from="Title_Area" to="." method="_on_Title_Area_area_entered"]
 [connection signal="body_entered" from="Title_Area" to="." method="_on_Title_Area_body_entered"]
 [connection signal="body_exited" from="Title_Area" to="." method="_on_Title_Area_body_exited"]

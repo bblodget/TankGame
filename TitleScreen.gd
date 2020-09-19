@@ -16,7 +16,7 @@ var move_text = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Lifesaver.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,3 +42,5 @@ func _on_Title_Area_body_exited(body):
 	move_text = false
 	$ShootTimer.start()
 	$TitleBoat2.move_boat = true
+	if body == $TitleBoat2:
+		$Lifesaver.visible = true
