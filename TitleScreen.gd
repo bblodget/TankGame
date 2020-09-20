@@ -44,3 +44,34 @@ func _on_Title_Area_body_exited(body):
 	$TitleBoat2.move_boat = true
 	if body == $TitleBoat2:
 		$Lifesaver.visible = true
+		$GameTimer.start()
+
+
+func _on_GameTimer_timeout():
+	# Remove the Title scene
+	var myroot = get_tree().get_root()
+	var tscreen = myroot.get_node("TitleScreen")
+	myroot.remove_child(tscreen)
+	tscreen.call_deferred("free")
+	
+	# Add the world scene
+	var scale = Vector2(0.5, 0.5)
+	var world_scene = load("res://World.tscn")
+	var world = world_scene.instance()
+	
+	world.get_node("Tank1").tank_sprite = load("res://dg_tank.png")
+	world.get_node("Tank1").initial_heading = 0
+	world.get_node("Tank1").scale = scale
+	
+	world.get_node("Tank2").tank_sprite = load("res://orange_tank.png")
+	world.get_node("Tank2").initial_heading = 0
+	world.get_node("Tank2").scale = scale
+	
+	myroot.add_child(world)
+	VisualServer.set_default_clear_color(Color(0.3,0.3,0.3,1.0))
+
+	
+	#world.Tank1.tank_sprite = "res://dg_tank.png"
+	#world.Tank2.tank_sprite = "res://orange_tank.png"
+	# get_tree().change_scene(world)
+	#owner.add_child(world)
