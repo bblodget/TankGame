@@ -34,11 +34,9 @@ func _process(delta):
 
 func _on_Title_Area_body_entered(body):
 	if body == $TitleBoat1:
-		print("Boat1 entered Title Area")
 		move_text = true
 
 func _on_Title_Area_body_exited(body):
-	print("Boat exited Title Area")
 	move_text = false
 	$ShootTimer.start()
 	$TitleBoat2.move_boat = true
@@ -48,6 +46,14 @@ func _on_Title_Area_body_exited(body):
 
 
 func _on_GameTimer_timeout():
+	# Show Boats or Tanks Selection
+	$TankSelection.visible = true
+	$BoatSelection.visible = true
+	$TanksOrBoats.visible = true
+	
+	
+	
+func start_game():
 	# Remove the Title scene
 	var myroot = get_tree().get_root()
 	var tscreen = myroot.get_node("TitleScreen")
