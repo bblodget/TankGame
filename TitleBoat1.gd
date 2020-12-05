@@ -28,5 +28,4 @@ func _physics_process(delta):
 
 func _on_Screen_Exit_body_entered(body):
 	if body == self:
-		print("Delete Boat1")
 		queue_free()

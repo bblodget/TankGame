@@ -34,7 +34,6 @@ func shoot():
 	var direction = Vector2(0, -1)
 	var distance_from_me = 40
 	var gpos = get_global_position() 
-	print("gpos: ", gpos, "direction: ", direction)
 	var spawn_point = gpos + (direction * distance_from_me)
 	
 	var bullet = bullet_scene.instance()

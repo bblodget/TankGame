@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://fonts/davida/Davida Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://boat_guy_still.png" type="Texture" id=2]
@@ -10,6 +10,10 @@
 [ext_resource path="res://lifesaver/lifesaver_4.png" type="Texture" id=8]
 [ext_resource path="res://lifesaver/lifesaver_1.png" type="Texture" id=9]
 [ext_resource path="res://lifesaver/lifesaver_3.png" type="Texture" id=10]
+[ext_resource path="res://Player_Selection/player_selection_1.png" type="Texture" id=11]
+[ext_resource path="res://Player_Selection/player_selection_3.png" type="Texture" id=12]
+[ext_resource path="res://Player_Selection/player_selection_2.png" type="Texture" id=13]
+[ext_resource path="res://Player_Selection/player_selection_4.png" type="Texture" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 38
@@ -37,8 +41,27 @@ animations = [ {
 "speed": 4.0
 } ]
 
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource( 4 )
+ui_left = "ui_p1_left"
+ui_right = "ui_p1_right"
+ui_accept = "ui_accept"
 
 [node name="Comb_label" type="Label" parent="."]
 margin_left = 88.028
@@ -129,11 +152,41 @@ visible = false
 position = Vector2( 185.074, 97.8867 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 6 )
+<<<<<<< HEAD
+=======
+frame = 1
+>>>>>>> 936482b75048c7a76f0ef16258514c25188236d6
 playing = true
 
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="BoatSelection" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 183.44, 135 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 7 )
+
+[node name="TankSelection" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 136.179, 135 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 8 )
+frame = 1
+
+[node name="TanksOrBoats" type="Label" parent="."]
+visible = false
+margin_left = 105.859
+margin_top = 157.336
+margin_right = 213.859
+margin_bottom = 188.336
+text = "Tanks or Boats
+Press A to Select"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="area_entered" from="Title_Area" to="." method="_on_Title_Area_area_entered"]
 [connection signal="body_entered" from="Title_Area" to="." method="_on_Title_Area_body_entered"]
 [connection signal="body_exited" from="Title_Area" to="." method="_on_Title_Area_body_exited"]
