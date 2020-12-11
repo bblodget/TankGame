@@ -152,10 +152,7 @@ visible = false
 position = Vector2( 185.074, 97.8867 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 6 )
-<<<<<<< HEAD
-=======
 frame = 1
->>>>>>> 936482b75048c7a76f0ef16258514c25188236d6
 playing = true
 
 [node name="GameTimer" type="Timer" parent="."]
