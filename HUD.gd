@@ -42,6 +42,7 @@ func _on_tank_hit(dead_tank, live_tank):
 		dead_tank.set_game_over(true)
 		live_tank.set_game_over(true)
 		game_over = true
+		$EndTime.start()
 		if live_tank.name == "Tank1":
 			#$PlayerWins.set("custom_colors/font_color",GREEN)
 			$PlayerWins.add_color_override("font_color", GREEN)
@@ -53,3 +54,17 @@ func _on_tank_hit(dead_tank, live_tank):
 		$PlayerWins.show()
 		$GameOver.show()
 
+
+func _on_EndTime_timeout():
+	# Remove the Title scene
+	var myroot = get_tree().get_root()
+	var wscreen = myroot.get_node("World")
+	myroot.remove_child(wscreen)
+	wscreen.call_deferred("free")
+	
+	# Add the Titlescreen
+	var title_scene = load("res://TitleScreen.tscn")
+	var ts = title_scene.instance()
+	VisualServer.set_default_clear_color(Color(0.06,0.68,0.84,1.0))
+		
+	myroot.add_child(ts)

@@ -74,3 +74,8 @@ text = "Player Wins"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="EndTime" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+[connection signal="timeout" from="EndTime" to="." method="_on_EndTime_timeout"]
