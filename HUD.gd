@@ -50,6 +50,19 @@ func _on_tank_hit(dead_tank, live_tank):
 			#$PlayerWins.set("custom_colors/font_color",ORANGE)
 			$PlayerWins.add_color_override("font_color", ORANGE)
 			$PlayerWins.text = "Orange Wins"
+		$TimerSetup.start()
 		$PlayerWins.show()
 		$GameOver.show()
 
+
+
+func _on_TimerSetup_timeout():
+	var myroot = get_tree().get_root()
+	var tscreen = myroot.get_node("World")
+	myroot.remove_child(tscreen)
+	tscreen.call_deferred("free")
+	
+	# Add the world scene
+	var world_scene = load("res://TitleScreen.tscn")
+	var world = world_scene.instance()
+	myroot.add_child(world)

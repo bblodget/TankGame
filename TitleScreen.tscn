@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://fonts/davida/Davida Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://boat_guy_still.png" type="Texture" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://Player_Selection/player_selection_3.png" type="Texture" id=12]
 [ext_resource path="res://Player_Selection/player_selection_2.png" type="Texture" id=13]
 [ext_resource path="res://Player_Selection/player_selection_4.png" type="Texture" id=14]
+[ext_resource path="res://CampaignSelec1.png" type="Texture" id=15]
+[ext_resource path="res://CampaignSelec.png" type="Texture" id=16]
 
 [sub_resource type="DynamicFont" id=1]
 size = 38
@@ -52,6 +54,14 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
 "frames": [ ExtResource( 11 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -152,7 +162,7 @@ visible = false
 position = Vector2( 185.074, 97.8867 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="GameTimer" type="Timer" parent="."]
@@ -172,21 +182,65 @@ scale = Vector2( 2, 2 )
 frames = SubResource( 8 )
 frame = 1
 
+[node name="CoopSelection" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 136.179, 135 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 8 )
+frame = 1
+
+[node name="CampaignSelection" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 181.789, 133.492 )
+scale = Vector2( 2.9263, 2.9263 )
+frames = SubResource( 9 )
+
 [node name="TanksOrBoats" type="Label" parent="."]
 visible = false
-margin_left = 105.859
-margin_top = 157.336
-margin_right = 213.859
-margin_bottom = 188.336
-text = "Tanks or Boats
-Press A to Select"
+margin_left = 76.2508
+margin_top = 156.076
+margin_right = 239.251
+margin_bottom = 187.076
+text = "Tanks Or Boats?"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Campaign" type="Label" parent="."]
+visible = false
+anchor_left = -5.198
+anchor_top = -3.741
+anchor_right = -5.198
+anchor_bottom = -3.741
+margin_left = 86.3696
+margin_top = 156.306
+margin_right = 249.37
+margin_bottom = 170.306
+text = "Campaign Or Local versus?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlsPrompt" type="Label" parent="."]
+visible = false
+margin_left = 19.5288
+margin_top = 24.5685
+margin_right = 310.529
+margin_bottom = 55.5685
+text = "Hit left or right to highlight your choice.
+Hit enter (keyboard) or A (controller) to select"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TransitionTimer" type="Timer" parent="."]
+wait_time = 0.5
 [connection signal="area_entered" from="Title_Area" to="." method="_on_Title_Area_area_entered"]
 [connection signal="body_entered" from="Title_Area" to="." method="_on_Title_Area_body_entered"]
 [connection signal="body_exited" from="Title_Area" to="." method="_on_Title_Area_body_exited"]
 [connection signal="body_entered" from="Screen_Exit" to="TitleBoat1" method="_on_Screen_Exit_body_entered"]
 [connection signal="timeout" from="ShootTimer" to="TitleBoat2" method="_on_ShootTimer_timeout"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
+[connection signal="timeout" from="TransitionTimer" to="." method="_on_TransitionTimer_timeout"]

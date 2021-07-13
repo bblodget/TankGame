@@ -1,11 +1,12 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://boat_guy_still.png" type="Texture" id=1]
 [ext_resource path="res://border_tiles.png" type="Texture" id=2]
 [ext_resource path="res://boat_guy_still2.png" type="Texture" id=3]
 [ext_resource path="res://TankPlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World.gd" type="Script" id=5]
-[ext_resource path="res://HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://HUD.gd" type="Script" id=6]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -213,6 +214,21 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 } ]
 0/z_index = 0
 
+[sub_resource type="DynamicFont" id=22]
+size = 24
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=23]
+size = 24
+outline_color = Color( 0.0705882, 0.0627451, 0.0627451, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=24]
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=25]
+font_data = ExtResource( 7 )
+
 [node name="World" type="Node2D"]
 script = ExtResource( 5 )
 
@@ -222,8 +238,67 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( -1, 0, 131073, -65536, 0, 131076, -65535, 0, 131076, -65534, 0, 131076, -65533, 0, 131076, -65532, 0, 131076, -65531, 0, 131076, -65530, 0, 131076, -65529, 0, 0, -65528, 0, 196608, -65527, 0, 196608, -65526, 0, 196608, -65525, 0, 196608, -65524, 0, 0, -65523, 0, 131076, -65522, 0, 131076, -65521, 0, 131076, -65520, 0, 131076, -65519, 0, 131076, -65518, 0, 131076, -65517, 0, 131076, -65516, 0, 65536, 65535, 0, 131075, 7, 0, 196611, 8, 0, 196612, 9, 0, 196612, 10, 0, 196612, 11, 0, 196612, 12, 0, 196609, 20, 0, 131075, 131071, 0, 131075, 65543, 0, 131072, 65544, 0, 196610, 65545, 0, 196610, 65546, 0, 196610, 65547, 0, 196610, 65548, 0, 65539, 65556, 0, 131075, 196607, 0, 131075, 131092, 0, 131075, 262143, 0, 131075, 196628, 0, 131075, 327679, 0, 131075, 262146, 0, 4, 262147, 0, 65536, 262160, 0, 131073, 262161, 0, 2, 262164, 0, 131075, 393215, 0, 131075, 327683, 0, 131075, 327686, 0, 1, 327689, 0, 131074, 327690, 0, 65537, 327693, 0, 1, 327696, 0, 131075, 327700, 0, 131075, 458751, 0, 131075, 393219, 0, 131075, 393222, 0, 3, 393225, 0, 131072, 393226, 0, 65539, 393229, 0, 3, 393232, 0, 131075, 393236, 0, 131075, 524287, 0, 131075, 458754, 0, 4, 458755, 0, 65538, 458768, 0, 65540, 458769, 0, 2, 458772, 0, 131075, 589823, 0, 131075, 524308, 0, 131075, 655359, 0, 131075, 589833, 0, 4, 589834, 0, 2, 589844, 0, 131075, 720895, 0, 131075, 655380, 0, 131075, 786431, 0, 131075, 720916, 0, 131075, 851967, 0, 65540, 786432, 0, 131076, 786433, 0, 131076, 786434, 0, 131076, 786435, 0, 131076, 786436, 0, 131076, 786437, 0, 131076, 786438, 0, 131076, 786439, 0, 131076, 786440, 0, 131076, 786441, 0, 131076, 786442, 0, 131076, 786443, 0, 131076, 786444, 0, 131076, 786445, 0, 131076, 786446, 0, 131076, 786447, 0, 131076, 786448, 0, 131076, 786449, 0, 131076, 786450, 0, 131076, 786451, 0, 131076, 786452, 0, 65538 )
 
-[node name="Score" parent="." instance=ExtResource( 6 )]
+[node name="Score" type="Node2D" parent="."]
 position = Vector2( 121.604, -0.317055 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+win_score = 10
+GREEN = Color( 0.14902, 0.835294, 0.121569, 1 )
+
+[node name="Player1Score" type="Label" parent="Score"]
+margin_left = 45.0
+margin_right = 79.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 22 )
+custom_colors/font_color = Color( 0.192157, 0.67451, 0.172549, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player2Score" type="Label" parent="Score"]
+margin_right = 37.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 23 )
+custom_colors/font_color = Color( 0.831373, 0.717647, 0.164706, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOver" type="Label" parent="Score"]
+visible = false
+margin_left = -25.8787
+margin_top = 112.808
+margin_right = 64.1213
+margin_bottom = 132.808
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = SubResource( 24 )
+custom_colors/font_color = Color( 0.768627, 0.215686, 0.772549, 1 )
+text = "Game Over"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerWins" type="Label" parent="Score"]
+visible = false
+margin_left = -29.791
+margin_top = 45.6795
+margin_right = 71.209
+margin_bottom = 65.6795
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = SubResource( 25 )
+custom_colors/font_color = Color( 0.0705882, 0.0666667, 0.0666667, 1 )
+text = "Player Wins"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimerSetup" type="Timer" parent="Score"]
+wait_time = 3.0
+one_shot = true
 
 [node name="Tank1" parent="." instance=ExtResource( 4 )]
 position = Vector2( 299.694, 95.3571 )
@@ -236,7 +311,7 @@ ui_fire = "ui_p1_fire"
 initial_heading = 90.0
 
 [node name="Tank2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 14.3036, 98.4222 )
+position = Vector2( 14.8333, 94.7141 )
 tank_sprite = ExtResource( 3 )
 ui_left = "ui_p2_left"
 ui_right = "ui_p2_right"
@@ -245,13 +320,49 @@ ui_down = "ui_p2_down"
 ui_fire = "ui_p2_fire"
 initial_heading = 90.0
 
-[node name="TimerSetup" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-autostart = true
-
 [node name="SpawnPos1" type="Position2D" parent="."]
 position = Vector2( 300, 95 )
 
 [node name="SpawnPos2" type="Position2D" parent="."]
 position = Vector2( 15, 95 )
+
+[node name="LPKControls" type="Label" parent="."]
+margin_top = 0.594604
+margin_right = 82.0
+margin_bottom = 48.5946
+text = "Keyboard:
+Move: WASD
+Fire: ctrl"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RPKControls" type="Label" parent="."]
+margin_left = 209.3
+margin_top = 7.62939e-06
+margin_right = 322.3
+margin_bottom = 48.0
+text = "Keyboard:
+Move: Arrow keys
+Fire: Shift"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UCControls" type="Label" parent="."]
+margin_left = 92.1635
+margin_top = 30.9194
+margin_right = 201.164
+margin_bottom = 78.9194
+text = "Controller:
+Move: Joysticks
+Fire: Right trigger"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+[connection signal="timeout" from="Score/TimerSetup" to="Score" method="_on_TimerSetup_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

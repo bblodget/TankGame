@@ -78,6 +78,8 @@ func set_game_over(is_over):
 	$SoundExplosion.playing = false
 	
 	
+	
+	
 
 func _physics_process(delta):
 	
@@ -189,3 +191,7 @@ func _on_SoundFire_finished():
 func _on_SoundExplosion_finished():
 	$SoundExplosion.playing = false
 	$SoundExplosion.seek(0.0)
+
+
+
+

@@ -3,19 +3,19 @@
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://HUD.gd" type="Script" id=2]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=22]
 size = 24
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=23]
 size = 24
 outline_color = Color( 0.0705882, 0.0627451, 0.0627451, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=24]
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=25]
 font_data = ExtResource( 1 )
 
 [node name="HUD" type="Node2D"]
@@ -30,7 +30,7 @@ GREEN = Color( 0.14902, 0.835294, 0.121569, 1 )
 margin_left = 45.0
 margin_right = 79.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0.192157, 0.67451, 0.172549, 1 )
 text = "00"
 __meta__ = {
@@ -40,7 +40,7 @@ __meta__ = {
 [node name="Player2Score" type="Label" parent="."]
 margin_right = 37.0
 margin_bottom = 30.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 23 )
 custom_colors/font_color = Color( 0.831373, 0.717647, 0.164706, 1 )
 text = "00"
 __meta__ = {
@@ -54,7 +54,7 @@ margin_top = 112.808
 margin_right = 64.1213
 margin_bottom = 132.808
 rect_scale = Vector2( 1.5, 1.5 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 24 )
 custom_colors/font_color = Color( 0.768627, 0.215686, 0.772549, 1 )
 text = "Game Over"
 __meta__ = {
@@ -68,9 +68,13 @@ margin_top = 45.6795
 margin_right = 71.209
 margin_bottom = 65.6795
 rect_scale = Vector2( 1.5, 1.5 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 25 )
 custom_colors/font_color = Color( 0.0705882, 0.0666667, 0.0666667, 1 )
 text = "Player Wins"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TimerSetup" type="Timer" parent="."]
+wait_time = 3.263
+[connection signal="timeout" from="TimerSetup" to="." method="_on_TimerSetup_timeout"]

@@ -1,0 +1,402 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://border_tiles.png" type="Texture" id=1]
+[ext_resource path="res://Campaign.gd" type="Script" id=2]
+[ext_resource path="res://Tank1.gd" type="Script" id=3]
+[ext_resource path="res://boat_guy_still.png" type="Texture" id=4]
+[ext_resource path="res://sounds/fire.wav" type="AudioStream" id=5]
+[ext_resource path="res://sounds/explosion.wav" type="AudioStream" id=6]
+[ext_resource path="res://sounds/idle.wav" type="AudioStream" id=7]
+[ext_resource path="res://explosion_3.png" type="Texture" id=8]
+[ext_resource path="res://explosion_1.png" type="Texture" id=9]
+[ext_resource path="res://explosion_4.png" type="Texture" id=10]
+[ext_resource path="res://explosion_5.png" type="Texture" id=11]
+[ext_resource path="res://explosion_2.png" type="Texture" id=12]
+[ext_resource path="res://sounds/move.wav" type="AudioStream" id=13]
+[ext_resource path="res://Tank2.gd" type="Script" id=14]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=9]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=11]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=12]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=13]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=14]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=15]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=16]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=17]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=18]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=19]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=20]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="TileSet" id=21]
+0/name = "border_tiles.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 80, 64 )
+0/tile_mode = 1
+0/autotile/bitmask_mode = 1
+0/autotile/bitmask_flags = [ Vector2( 0, 0 ), 16, Vector2( 0, 1 ), 152, Vector2( 0, 2 ), 54, Vector2( 0, 3 ), 504, Vector2( 1, 0 ), 144, Vector2( 1, 1 ), 216, Vector2( 1, 2 ), 176, Vector2( 1, 3 ), 219, Vector2( 2, 0 ), 24, Vector2( 2, 1 ), 26, Vector2( 2, 2 ), 432, Vector2( 2, 3 ), 63, Vector2( 3, 0 ), 18, Vector2( 3, 1 ), 27, Vector2( 3, 2 ), 146, Vector2( 3, 3 ), 438, Vector2( 4, 0 ), 48, Vector2( 4, 1 ), 50, Vector2( 4, 2 ), 56, Vector2( 4, 3 ), 511 ]
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 4, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 8 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 9 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 4, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 10 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 2 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 11 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 2 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 12 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 2 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 13 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 2 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 14 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 4, 2 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 15 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 3 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 16 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 3 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 17 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 3 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 18 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 3 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 19 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 4, 3 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 20 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 7.78017, 7.10828 )
+
+[sub_resource type="SpriteFrames" id=23]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 61.5916, 61.0108 )
+
+[node name="Campaign" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 21 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -1, 0, 131073, -65536, 0, 131076, -65535, 0, 131076, -65534, 0, 131076, -65533, 0, 131076, -65532, 0, 131076, -65531, 0, 0, -65530, 0, 131076, -65529, 0, 131076, -65528, 0, 131076, -65527, 0, 131076, -65526, 0, 131076, -65525, 0, 131076, -65524, 0, 131076, -65523, 0, 131076, -65522, 0, 131076, -65521, 0, 131076, -65520, 0, 131076, -65519, 0, 131076, -65518, 0, 131076, -65517, 0, 131076, -65516, 0, 65536, 65535, 0, 131075, 5, 0, 131075, 20, 0, 0, 21, 0, 131076, 22, 0, 131076, 23, 0, 131076, 24, 0, 131076, 25, 0, 131076, 26, 0, 131076, 27, 0, 131076, 28, 0, 131076, 29, 0, 65536, 131071, 0, 131075, 65541, 0, 131075, 65556, 0, 131075, 65565, 0, 131075, 196607, 0, 131075, 131077, 0, 3, 131092, 0, 131075, 131101, 0, 131075, 262143, 0, 131075, 196626, 0, 4, 196627, 0, 131076, 196628, 0, 0, 196637, 0, 131075, 327679, 0, 131075, 262146, 0, 4, 262147, 0, 65536, 262160, 0, 131073, 262161, 0, 2, 262164, 0, 131075, 262173, 0, 131075, 393215, 0, 131075, 327683, 0, 131075, 327696, 0, 131075, 327700, 0, 131075, 327709, 0, 131075, 458751, 0, 131075, 393219, 0, 131075, 393232, 0, 131075, 393236, 0, 131075, 393245, 0, 131075, 524287, 0, 131075, 458754, 0, 4, 458755, 0, 65538, 458765, 0, 1, 458768, 0, 65540, 458769, 0, 2, 458772, 0, 131075, 458781, 0, 131075, 589823, 0, 131075, 524301, 0, 131075, 524308, 0, 131075, 524317, 0, 131075, 655359, 0, 131075, 589837, 0, 131075, 589844, 0, 0, 589845, 0, 131076, 589846, 0, 131076, 589847, 0, 131076, 589848, 0, 131076, 589849, 0, 131076, 589850, 0, 131076, 589851, 0, 131076, 589852, 0, 131076, 589853, 0, 65538, 720895, 0, 131075, 655373, 0, 131075, 655380, 0, 131075, 786431, 0, 131075, 720909, 0, 131075, 720916, 0, 131075, 851967, 0, 65540, 786432, 0, 131076, 786433, 0, 131076, 786434, 0, 131076, 786435, 0, 131076, 786436, 0, 131076, 786437, 0, 131076, 786438, 0, 131076, 786439, 0, 131076, 786440, 0, 131076, 786441, 0, 131076, 786442, 0, 131076, 786443, 0, 131076, 786444, 0, 131076, 786445, 0, 0, 786446, 0, 131076, 786447, 0, 131076, 786448, 0, 131076, 786449, 0, 131076, 786450, 0, 131076, 786451, 0, 131076, 786452, 0, 65538 )
+
+[node name="SpawnPos1" type="Position2D" parent="."]
+position = Vector2( 16.8369, 93.1643 )
+
+[node name="SpawnPos2" type="Position2D" parent="."]
+position = Vector2( 301.942, 94.848 )
+
+[node name="Tank1" type="KinematicBody2D" parent="."]
+position = Vector2( 19.1543, 93.5444 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+ui_left = "ui_p1_left"
+ui_right = "ui_p1_right"
+ui_up = "ui_p1_up"
+ui_down = "ui_p1_down"
+ui_fire = "ui_p1_fire"
+
+[node name="tank" type="Sprite" parent="Tank1"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+offset = Vector2( 0, -1.5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tank1"]
+shape = SubResource( 22 )
+
+[node name="StartPosition" type="Position2D" parent="Tank1"]
+visible = false
+
+[node name="ExplosionAnim" type="AnimatedSprite" parent="Tank1"]
+visible = false
+frames = SubResource( 23 )
+frame = 1
+
+[node name="SoundIdle" type="AudioStreamPlayer2D" parent="Tank1"]
+stream = ExtResource( 7 )
+volume_db = -15.0
+
+[node name="SoundMove" type="AudioStreamPlayer2D" parent="Tank1"]
+stream = ExtResource( 13 )
+volume_db = -15.0
+pitch_scale = 1.2
+
+[node name="SoundFire" type="AudioStreamPlayer2D" parent="Tank1"]
+stream = ExtResource( 5 )
+
+[node name="SoundExplosion" type="AudioStreamPlayer2D" parent="Tank1"]
+stream = ExtResource( 6 )
+
+[node name="Player" type="Label" parent="Tank1"]
+margin_left = -21.4542
+margin_top = -63.2865
+margin_right = 18.5458
+margin_bottom = -15.2865
+text = "You
+|
+\\/"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tank2" type="KinematicBody2D" parent="."]
+position = Vector2( 300.233, 93.9898 )
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+ui_left = "ui_p1_left"
+ui_right = "ui_p1_right"
+ui_up = "ui_p1_up"
+ui_down = "ui_p1_down"
+ui_fire = "ui_p1_fire"
+
+[node name="tank" type="Sprite" parent="Tank2"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+offset = Vector2( 0, -1.5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tank2"]
+shape = SubResource( 22 )
+
+[node name="StartPosition" type="Position2D" parent="Tank2"]
+visible = false
+
+[node name="ExplosionAnim" type="AnimatedSprite" parent="Tank2"]
+visible = false
+frames = SubResource( 23 )
+frame = 1
+
+[node name="SoundIdle" type="AudioStreamPlayer2D" parent="Tank2"]
+stream = ExtResource( 7 )
+volume_db = -15.0
+
+[node name="SoundMove" type="AudioStreamPlayer2D" parent="Tank2"]
+stream = ExtResource( 13 )
+volume_db = -15.0
+pitch_scale = 1.2
+
+[node name="SoundFire" type="AudioStreamPlayer2D" parent="Tank2"]
+stream = ExtResource( 5 )
+
+[node name="SoundExplosion" type="AudioStreamPlayer2D" parent="Tank2"]
+stream = ExtResource( 6 )
+
+[node name="Enemy" type="Label" parent="Tank2"]
+margin_left = -20.4907
+margin_top = -60.5811
+margin_right = 22.5093
+margin_bottom = -12.5811
+text = "Enemy
+|
+\\/"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextTimeout" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Controls" type="Label" parent="."]
+margin_left = 103.79
+margin_top = 1.78179
+margin_right = 160.79
+margin_bottom = 32.7818
+text = "Keyboard Controls:
+Move: arrow keys
+Fire: shift key
+Controller Controls:
+Move: joystick
+Fire: right trigger"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 399.568, 79.29 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 24 )
+
+[node name="DefeatBox" type="Position2D" parent="."]
+position = Vector2( 351.014, 32.0724 )
+[connection signal="animation_finished" from="Tank1/ExplosionAnim" to="Tank1" method="_on_ExplosionAnim_animation_finished"]
+[connection signal="finished" from="Tank1/SoundFire" to="Tank1" method="_on_SoundFire_finished"]
+[connection signal="finished" from="Tank1/SoundExplosion" to="Tank1" method="_on_SoundExplosion_finished"]
+[connection signal="animation_finished" from="Tank2/ExplosionAnim" to="Tank2" method="_on_ExplosionAnim_animation_finished"]
+[connection signal="finished" from="Tank2/SoundFire" to="Tank2" method="_on_SoundFire_finished"]
+[connection signal="finished" from="Tank2/SoundExplosion" to="Tank2" method="_on_SoundExplosion_finished"]
+[connection signal="timeout" from="TextTimeout" to="." method="_on_TextTimeout_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
