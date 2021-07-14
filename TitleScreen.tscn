@@ -162,6 +162,7 @@ visible = false
 position = Vector2( 185.074, 97.8867 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 6 )
+frame = 2
 playing = true
 
 [node name="GameTimer" type="Timer" parent="."]
@@ -236,7 +237,6 @@ __meta__ = {
 
 [node name="TransitionTimer" type="Timer" parent="."]
 wait_time = 0.5
-
 [connection signal="area_entered" from="Title_Area" to="." method="_on_Title_Area_area_entered"]
 [connection signal="body_entered" from="Title_Area" to="." method="_on_Title_Area_body_entered"]
 [connection signal="body_exited" from="Title_Area" to="." method="_on_Title_Area_body_exited"]
