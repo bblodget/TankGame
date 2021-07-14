@@ -363,7 +363,7 @@ __meta__ = {
 }
 
 [node name="TextTimeout" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 6.0
 autostart = true
 
 [node name="Controls" type="Label" parent="."]
@@ -392,6 +392,7 @@ shape = SubResource( 24 )
 
 [node name="DefeatBox" type="Position2D" parent="."]
 position = Vector2( 351.014, 32.0724 )
+
 [connection signal="animation_finished" from="Tank1/ExplosionAnim" to="Tank1" method="_on_ExplosionAnim_animation_finished"]
 [connection signal="finished" from="Tank1/SoundFire" to="Tank1" method="_on_SoundFire_finished"]
 [connection signal="finished" from="Tank1/SoundExplosion" to="Tank1" method="_on_SoundExplosion_finished"]
